@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="build/css/vendor.css">
+    <script src="build/js/vendor.min.js"></script>
+    <script type="text/javascript" src="build/js/app.js"></script>
     <title>Dino Ipsum Game</title>
   </head>
   <body>
@@ -15,7 +18,7 @@
           <label for="words">Enter the number of words you want to generate: </label>
           <input type="number" name="words" id="words">
         </div>
-        <button type="submit" name="submit-button" class="btn-success"></button>
+        <button type="button" name="submit-button" id="get-dino" class="btn-success">Get Dino Ipsum</button>
       </form>
       <div>
         <h2>Here's your Dino Ipsum:</h2>
