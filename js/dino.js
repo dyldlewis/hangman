@@ -4,12 +4,13 @@ function Dino(paragraphs, words) {
 }
 
 Dino.prototype.getDino = function(displayDinos) {
-  $.get('http://dinoipsum.herokuapp.com/api/?format=json' +  '&paragraphs=' + this.paragraphs + '&words=' + this.words)
+  var paragraphs = this.paragraphs;
+  var words = this.words;
+  $.get('http://dinoipsum.herokuapp.com/api/?format=json' +  '&paragraphs=' + paragraphs + '&words=' + words)
   .then(function(response) {
     var dinos = response;
-    for (i = 0; i < this.paragraphs; i++) {
+    for (i = 0; i < paragraphs; i++) {
       var new_array = response[i].join(" ");
-      console.log(new_array);
       displayDinos(new_array);
     }
   })
