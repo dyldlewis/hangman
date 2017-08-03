@@ -3,6 +3,7 @@ function Dino(paragraphs, words) {
   this.words = words;
   this.apicall = "";
   this.dinoParse = [];
+  this.counter = -1;
   // this.dinoLetters = [];
 }
 
@@ -60,14 +61,20 @@ Dino.prototype.randomDino = function(displayRandom) {
   });
 };
 
-Dino.prototype.compareLetters = function(user_letter, dinoLetters, hideLetters) {
+Dino.prototype.compareLetters = function(user_letter, dinoLetters, hideLetters, displayHangman) {
+  var idList = ["head-top", "head-bottom", "neck", "left-arm", "right-arm", "torso-1", "torso-2", "legs-top", "legs-bottom"];
   var index_array = [];
   for (idx = 0; idx < dinoLetters.length; idx++) {
     if (dinoLetters[idx] === user_letter) {
       index_array.push(idx);
     }
   }
-  hideLetters(index_array);
+  if (index_array.length === 0) {
+    this.counter += 1;
+    displayHangman(this.counter, idList);
+  } else {
+    hideLetters(index_array);
+  }
 };
 
 exports.dinoModule = Dino;

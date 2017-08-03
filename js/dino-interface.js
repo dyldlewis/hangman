@@ -3,12 +3,19 @@ var Dino = require('./../js/dino.js').dinoModule;
 var displayDinos = function(dino_paragraphs) {
   $('#output').append(dino_paragraphs + "<br>");
 };
+
 var displayRandom = function(dinoLetters) {
   letterIndex = 0;
   for (i = 0; i < dinoLetters.length; i++) {
     $("#random").append("<span class='" + i + "'>" + dinoLetters[i] + "<span>");
     letterIndex++;
   }
+};
+
+var displayHangman = function(mistake_count, idList) {
+  var idName = idList[mistake_count];
+  var newId = "#" + idName;
+  $(newId).show();
 };
 
 var hideLetters = function(index_array) {
@@ -33,6 +40,6 @@ $(document).ready(function() {
   $("#letter-entry").submit(function(event) {
     event.preventDefault();
     var user_letter = $("#enter-letter").val();
-    var compareArray = newDino.compareLetters(user_letter, dinoLetters, hideLetters);
+    var compareArray = newDino.compareLetters(user_letter, dinoLetters, hideLetters, displayHangman);
   });
 });
