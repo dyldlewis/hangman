@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="build/css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
     <title>Dino Ipsum Game</title>
@@ -23,7 +24,24 @@
       <div>
         <h2>Here's your Dino Ipsum:</h2>
         <p id="output"></p><br>
-        <p id="random"></p>
+      </div>
+
+      <div class="container hangman">
+        <div class="hangman-image">
+          <h2>Let's Play Hangman!</h2>
+          <p id="hangman-image">  __________________<br>
+               /\                |<br>
+               \/                |<br>
+               |                |<br>
+----              |<br>
+               |                |<br>
+               |                |<br>
+               /\               |<br>
+          /  \              |<br>
+                     ___________|</p>
+          <br>
+          <p id="random"></p>
+        </div>
       </div>
     </div>
   </body>
