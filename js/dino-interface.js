@@ -17,7 +17,7 @@ var hideLetters = function(index_array) {
     console.log(index_array[j]);
     var idx = "." + index_array[j];
     console.log(idx);
-    $(idx).hide();
+    $(idx).addClass("show-letter");
   }
 };
 
