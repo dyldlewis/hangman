@@ -53,21 +53,25 @@ Dino.prototype.randomDino = function(displayRandom) {
     var randomDino = this.dinoParse[random];
     dinoLetters = randomDino.split("");
     displayRandom(dinoLetters);
-    return dinoLetters
+    return dinoLetters;
   })
   .fail(function(error) {
     $("#output").text(error.responseJSON.message);
   });
 };
 
-Dino.prototype.compareLetters = function(user_letter, dinoLetters) {
+Dino.prototype.compareLetters = function(user_letter, dinoLetters, showLetter) {
+  var comparison = false;
   var index_array = [];
   for (idx = 0; idx < dinoLetters.length; idx++) {
     if (dinoLetters[idx] === user_letter) {
-      index_array.push(idx);
+      comparison = true;
     }
   }
-  return index_array;
+  if (comparison) {
+    showLetter(user_letter);
+  }
+  // return index_array;
 };
 
 exports.dinoModule = Dino;

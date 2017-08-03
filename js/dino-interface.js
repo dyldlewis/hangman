@@ -11,6 +11,10 @@ var displayRandom = function(dinoLetters) {
   }
 };
 
+var showLetter = function(letter) {
+  $({class : letter}).hide();
+};
+
 $(document).ready(function() {
   $('#get-dino').click(function() {
     var paragraphs = parseInt($('#paragraphs').val());
@@ -23,6 +27,6 @@ $(document).ready(function() {
   $("#letter-entry").submit(function(event) {
     event.preventDefault();
     var user_letter = $("#enter-letter").val();
-    var compareArray = newDino.compareLetters(user_letter, dinoLetters);
+    var compareArray = newDino.compareLetters(user_letter, dinoLetters, showLetter);
   });
 });
