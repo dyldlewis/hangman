@@ -19,25 +19,6 @@ Dino.prototype.getDino = function() {
     });
 };
 
-Dino.prototype.randomDino = function(displayRandom) {  // not displaying
-  var allDinos = [];
-  var response = this.apicall;
-  var paragraphs = this.paragraphs;
-  var words = this.words;
-  response.then(function(response) {
-    for (i = 0; i < paragraphs; i++) {
-      for (k = 0; k < words; k++) {
-        allDinos.push(response[i][k]);
-      }
-    }
-    this.dinoParse = allDinos;
-    var random = getRandomInt(paragraphs, words);
-    displayRandom(this.dinoParse[random]);
-  })
-  .fail(function(error) {
-    $("#output").text(error.responseJSON.message);
-  });
-};
 
 Dino.prototype.dinoParagraphs = function(displayDinos) {
   var allDinos = [];
@@ -53,6 +34,28 @@ Dino.prototype.dinoParagraphs = function(displayDinos) {
     .fail(function(error) {
       $("#output").text(error.responseJSON.message);
     });
+};
+
+Dino.prototype.randomDino = function(displayRandom) {
+  var allDinos = [];
+  var response = this.apicall;
+  var paragraphs = this.paragraphs;
+  var words = this.words;
+  response.then(function(response) {
+    for (i = 0; i < paragraphs; i++) {
+      for (k = 0; k < words; k++) {
+        allDinos.push(response[i][k]);
+      }
+    }
+    this.dinoParse = allDinos;
+    var random = getRandomInt(paragraphs, words);
+    var randomDino = this.dinoParse[random];
+    var dinoLetters = randomDino.split("");
+    displayRandom(dinoLetters);
+  })
+  .fail(function(error) {
+    $("#output").text(error.responseJSON.message);
+  });
 };
 
 exports.dinoModule = Dino;
