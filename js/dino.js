@@ -52,7 +52,6 @@ Dino.prototype.randomDino = function(displayRandom) {
     var random = getRandomInt(paragraphs, words);
     var randomDino = this.dinoParse[random];
     dinoLetters = randomDino.split("");
-    // console.log(this);
     displayRandom(dinoLetters);
     return dinoLetters
   })
