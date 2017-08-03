@@ -5,9 +5,19 @@ var displayDinos = function(dino_paragraphs) {
 };
 var displayRandom = function(dinoLetters) {
   letterIndex = 0;
-  for (i = 0; i < dinoLetters.length; i ++) {
-    $("#random").append("<span class='letter'>" + dinoLetters[i] + "<span>");
+  for (i = 0; i < dinoLetters.length; i++) {
+    $("#random").append("<span class='" + i + "'>" + dinoLetters[i] + "<span>");
     letterIndex++;
+  }
+};
+
+var hideLetters = function(index_array) {
+  console.log(index_array);
+  for (j = 0; j < index_array.length; j++) {
+    console.log(index_array[j]);
+    var idx = "." + index_array[j];
+    console.log(idx);
+    $(idx).hide();
   }
 };
 
@@ -23,6 +33,6 @@ $(document).ready(function() {
   $("#letter-entry").submit(function(event) {
     event.preventDefault();
     var user_letter = $("#enter-letter").val();
-    var compareArray = newDino.compareLetters(user_letter, dinoLetters);
+    var compareArray = newDino.compareLetters(user_letter, dinoLetters, hideLetters);
   });
 });

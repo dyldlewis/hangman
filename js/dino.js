@@ -52,23 +52,22 @@ Dino.prototype.randomDino = function(displayRandom) {
     var random = getRandomInt(paragraphs, words);
     var randomDino = this.dinoParse[random];
     dinoLetters = randomDino.split("");
-    // console.log(this);
     displayRandom(dinoLetters);
-    return dinoLetters
+    return dinoLetters;
   })
   .fail(function(error) {
     $("#output").text(error.responseJSON.message);
   });
 };
 
-Dino.prototype.compareLetters = function(user_letter, dinoLetters) {
+Dino.prototype.compareLetters = function(user_letter, dinoLetters, hideLetters) {
   var index_array = [];
   for (idx = 0; idx < dinoLetters.length; idx++) {
     if (dinoLetters[idx] === user_letter) {
       index_array.push(idx);
     }
   }
-  return index_array;
+  hideLetters(index_array);
 };
 
 exports.dinoModule = Dino;
