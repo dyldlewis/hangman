@@ -1,0 +1,8 @@
+body {
+  background-color: #ededed;
+}
+
+#hangman-image {
+  text-align: center;
+  font-family: monospace;
+}
