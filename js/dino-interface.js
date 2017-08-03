@@ -15,9 +15,14 @@ $(document).ready(function() {
   $('#get-dino').click(function() {
     var paragraphs = parseInt($('#paragraphs').val());
     var words = parseInt($('#words').val());
-    var newDino = new Dino(paragraphs, words);
+    newDino = new Dino(paragraphs, words);
     newDino.getDino();
-    newDino.randomDino(displayRandom);
+    dinoLetters = newDino.randomDino(displayRandom);
     newDino.dinoParagraphs(displayDinos);
+  });
+  $("#letter-entry").submit(function(event) {
+    event.preventDefault();
+    var user_letter = $("#enter-letter").val();
+    var compareArray = newDino.compareLetters(user_letter, dinoLetters);
   });
 });

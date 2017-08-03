@@ -3,6 +3,7 @@ function Dino(paragraphs, words) {
   this.words = words;
   this.apicall = "";
   this.dinoParse = [];
+  // this.dinoLetters = [];
 }
 
 function getRandomInt(paragraphs, words) {
@@ -50,12 +51,24 @@ Dino.prototype.randomDino = function(displayRandom) {
     this.dinoParse = allDinos;
     var random = getRandomInt(paragraphs, words);
     var randomDino = this.dinoParse[random];
-    var dinoLetters = randomDino.split("");
+    dinoLetters = randomDino.split("");
+    // console.log(this);
     displayRandom(dinoLetters);
+    return dinoLetters
   })
   .fail(function(error) {
     $("#output").text(error.responseJSON.message);
   });
+};
+
+Dino.prototype.compareLetters = function(user_letter, dinoLetters) {
+  var index_array = [];
+  for (idx = 0; idx < dinoLetters.length; idx++) {
+    if (dinoLetters[idx] === user_letter) {
+      index_array.push(idx);
+    }
+  }
+  return index_array;
 };
 
 exports.dinoModule = Dino;
