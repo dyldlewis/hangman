@@ -4,8 +4,10 @@ var displayDinos = function(dino_paragraphs) {
   $('#output').append(dino_paragraphs + "<br>");
 };
 var displayRandom = function(dinoLetters) {
+  letterIndex = 0;
   for (i = 0; i < dinoLetters.length; i ++) {
-    $("#random").append("<span>" + dinoLetters[i] + "<span>");
+    $("#random").append("<span class='letter'>" + dinoLetters[i] + "<span>");
+    letterIndex++;
   }
 };
 
